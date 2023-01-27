@@ -7,18 +7,20 @@ import {
   UsersIcon,
   RssIcon,
   ClipboardCheckIcon,
+  ThumbUpIcon,
   MailIcon
 } from '@heroicons/react/outline'
 import Social from '../Common/Social.js'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import WechatPay from '@/components/Post/WechatPay'
 
 const Footer = ({ fullWidth }) => {
   const router = useRouter()
   const { locale } = useRouter()
   const t = lang[locale]
   const [showCopied, setShowCopied] = useState(false)
-
+  const [showPay, setShowPay] = useState(false)
   let activeMenu = ''
   if (router.query.slug) {
     activeMenu = '/' + router.query.slug
@@ -119,6 +121,15 @@ const Footer = ({ fullWidth }) => {
                 </span>
               </button>
             )}
+            {BLOG.showWeChatPay && (
+              <button
+                onClick={() => setShowPay((showPay) => !showPay)}
+                className='hover:bg-gray-200 dark:hover:bg-gray-700 inline-flex py-1 px-2 rounded-lg items-center'
+              >
+                <ThumbUpIcon className='w-5 h-5' />
+                <span className='font-light inline-block m-1'>{t.HERO.HOME.DONATE}</span>
+              </button>
+            )}
           </ul>
           <div className='hidden md:flex'>
             <Social />
@@ -136,6 +147,7 @@ const Footer = ({ fullWidth }) => {
           </p>
         </div>
       </footer>
+      {showPay && <WechatPay />}
     </motion.div>
   )
 }
