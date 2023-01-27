@@ -67,9 +67,8 @@ const Footer = ({ fullWidth }) => {
 
   return (
     <motion.div
-      className={`mt-6 flex-shrink-0 m-auto w-full text-gray-600 dark:text-gray-300 transition-all ${
-        !fullWidth ? 'max-w-3xl md:px-8' : 'px-4 md:px-24'
-      }`}
+      className={`mt-6 flex-shrink-0 m-auto w-full text-gray-600 dark:text-gray-300 transition-all ${!fullWidth ? 'max-w-3xl md:px-8' : 'px-4 md:px-24'
+        }`}
     >
       <footer className='max-w-screen-2xl px-4 md:px-8 mx-auto'>
         <div className='flex flex-col md:flex-row justify-between items-center border-b dark:border-gray-600 py-1'>
@@ -79,11 +78,10 @@ const Footer = ({ fullWidth }) => {
                 link.show && (
                   <Link passHref key={link.id} href={link.to} scroll={false}>
                     <li key={link.id}
-                      className={`${
-                        activeMenu === link.to
+                      className={`${activeMenu === link.to
                           ? 'bg-gray-200 dark:bg-gray-700'
-                          : '' 
-                      } hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg block py-1 px-2 nav`}
+                          : ''
+                        } hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg block py-1 px-2 nav`}
                     >
                       <div className='font-light'>
                         {link.icon}
@@ -136,7 +134,6 @@ const Footer = ({ fullWidth }) => {
             <Social />
           </div>
         </div>
-        
         <div className='my-4 text-sm leading-6 flex align-baseline justify-between flex-wrap' >
           <p>
             © {from === y || !from ? y : `${from} - ${y}`} | {BLOG.author}
@@ -148,7 +145,7 @@ const Footer = ({ fullWidth }) => {
             </a>
             {t.FOOTER.COPYRIGHT_END}
             </p>  */}
-          <Vercel/>
+          <Vercel />
         </div>
       </footer>
       {showPay && <WechatPay />}
