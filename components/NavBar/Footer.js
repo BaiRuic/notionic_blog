@@ -14,6 +14,7 @@ import Social from '../Common/Social.js'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import WechatPay from '@/components/Post/WechatPay'
+import Vercel from '@/components/Common/Vercel'
 
 const Footer = ({ fullWidth }) => {
   const router = useRouter()
@@ -135,9 +136,11 @@ const Footer = ({ fullWidth }) => {
             <Social />
           </div>
         </div>
-
-        <div className='text-gray-400 text-xs font-light py-4'>
-          © {from === y || !from ? y : `${from} - ${y}`} | {BLOG.author}
+        
+        <div className='my-4 text-sm leading-6 flex align-baseline justify-between flex-wrap' >
+          <p>
+            © {from === y || !from ? y : `${from} - ${y}`} | {BLOG.author}
+          </p>
           {/* <p className='md:float-right'>
             {t.FOOTER.COPYRIGHT_START}
             <a className='underline' href={`${t.FOOTER.COPYRIGHT_LINK}`}>
@@ -145,6 +148,7 @@ const Footer = ({ fullWidth }) => {
             </a>
             {t.FOOTER.COPYRIGHT_END}
             </p>  */}
+          <Vercel/>
         </div>
       </footer>
       {showPay && <WechatPay />}
