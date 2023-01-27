@@ -5,15 +5,19 @@ import { useRouter } from 'next/router'
 import {
   UserIcon,
   UsersIcon,
+  RssIcon,
+  ClipboardCheckIcon,
   MailIcon
 } from '@heroicons/react/outline'
 import Social from '../Common/Social.js'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 const Footer = ({ fullWidth }) => {
   const router = useRouter()
   const { locale } = useRouter()
   const t = lang[locale]
+  const [showCopied, setShowCopied] = useState(false)
 
   let activeMenu = ''
   if (router.query.slug) {
@@ -25,6 +29,14 @@ const Footer = ({ fullWidth }) => {
   const d = new Date()
   const y = d.getFullYear()
   const from = +BLOG.since
+
+  const clickCopy = async () => {
+    setShowCopied(true)
+    navigator.clipboard.writeText(BLOG.link + '/feed')
+    setTimeout(() => {
+      setShowCopied(false)
+    }, 1000)
+  }
 
   const links = [
     {
@@ -67,7 +79,7 @@ const Footer = ({ fullWidth }) => {
                       className={`${
                         activeMenu === link.to
                           ? 'bg-gray-200 dark:bg-gray-700'
-                          : ''
+                          : '' 
                       } hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg block py-1 px-2 nav`}
                     >
                       <div className='font-light'>
@@ -77,6 +89,35 @@ const Footer = ({ fullWidth }) => {
                     </li>
                   </Link>
                 )
+            )}
+            {showCopied ? (
+              <button
+                disabled
+                className='bg-gray-200 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 inline-flex py-1 px-2 rounded-lg items-center'
+              >
+                <ClipboardCheckIcon className='inline-block mb-1 h-5 w-5' />
+                <span>
+                  {/* <span className='text-xs text-gray-600 dark:text-day mb-1'>
+                    {t.HERO.RSS_BUTTON_DES_COPIED}
+                  </span> */}
+                  <span className='font-light inline-block m-1'>
+                    {t.HERO.RSS_BUTTON_COPIED}
+                  </span>
+                </span>
+              </button>
+            ) : (
+              <button
+                onClick={() => clickCopy()}
+                className='hover:bg-gray-200 dark:hover:bg-gray-700 inline-flex py-1 px-2 rounded-lg items-center'
+              >
+                <RssIcon className='inline-block mb-1 h-5 w-5' />
+                <span className=''>
+                  {/* <span className='text-xs text-gray-600 dark:text-day mb-1'>
+                    {t.HERO.RSS_BUTTON_DES}
+                  </span> */}
+                  <span className='font-light inline-block m-1'>{t.HERO.HOME.RSS_BUTTON}</span>
+                </span>
+              </button>
             )}
           </ul>
           <div className='hidden md:flex'>
