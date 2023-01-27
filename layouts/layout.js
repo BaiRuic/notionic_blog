@@ -11,7 +11,7 @@ import { getPageTitle } from 'notion-utils'
 import Aside from '@/components/Post/Aside'
 import Comments from '@/components/Post/Comments'
 import Container from '@/components/Container'
-import PostFooter from '@/components/Post/PostFooter'
+// import PostFooter from '@/components/Post/PostFooter'
 import TagItem from '@/components/Common/TagItem'
 
 import { ChevronLeftIcon } from '@heroicons/react/outline'
@@ -188,7 +188,7 @@ const Layout = ({ children, blockMap, frontMatter, fullWidth = false, subPage = 
         <Aside subPageTitle={subPageTitle} frontMatter={frontMatter} />
       </motion.div>
 
-      <PostFooter />
+      {/*<PostFooter />*/}
       <Comments frontMatter={frontMatter} />
     </Container>
   )
