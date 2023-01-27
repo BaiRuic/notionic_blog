@@ -2,11 +2,12 @@ import BLOG from '@/blog.config'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import WechatPay from '@/components/Post/WechatPay'
-import { ThumbUpIcon, ChevronLeftIcon, ArrowUpIcon } from '@heroicons/react/outline'
+// import WechatPay from '@/components/Post/WechatPay'
+// import { ThumbUpIcon, ChevronLeftIcon, ArrowUpIcon } from '@heroicons/react/outline'
+import { ChevronLeftIcon, ArrowUpIcon } from '@heroicons/react/outline'
 
 const Aside = ({ subPageTitle, frontMatter }) => {
-  const [showPay, setShowPay] = useState(false)
+  // const [showPay, setShowPay] = useState(false)
   const [showButton, setShowButton] = useState(false)
   const [showSubPageTitle, setShowSubPageTitle] = useState(false)
 
