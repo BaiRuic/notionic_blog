@@ -4,6 +4,7 @@ import BLOG from '@/blog.config'
 const Social = () => {
   return (
     <div className='flex gap-4'>
+      {/*
       <Link href={`${BLOG.socialLink.telegram}`} scroll={false}>
         <a
           target='_blank' aria-label='Telegram'
@@ -40,6 +41,7 @@ const Social = () => {
           </svg>
         </a>
       </Link>
+  */}
       <Link href={`${BLOG.socialLink.github}`} scroll={false}>
         <a
           target='_blank' aria-label='Github'
