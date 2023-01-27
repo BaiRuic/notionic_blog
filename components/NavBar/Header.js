@@ -8,6 +8,7 @@ import {
   NewspaperIcon,
   CollectionIcon,
   SparklesIcon,
+  BookOpenIcon,
   SearchIcon,
   MenuIcon
 } from '@heroicons/react/outline'
@@ -60,6 +61,13 @@ const NavBar = () => {
     },
     {
       id: 4,
+      name: t.NAV.BOOKS,
+      to: '/books',
+      icon: <BookOpenIcon className='inline-block mb-1 h-5 w-5' />,
+      show: BLOG.pagesShow.books
+    },
+    {
+      id: 5,
       name: t.NAV.SEARCH,
       to: '/search',
       icon: <SearchIcon className='inline-block mb-1 h-5 w-5' />,
