@@ -1,6 +1,6 @@
 import Container from '@/components/Container'
 import BlogPost from '@/components/BlogPost'
-import Hero from '@/components/Hero/Home'
+//import Hero from '@/components/Hero/Home'
 import Pagination from '@/components/Pagination'
 import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
@@ -36,7 +36,7 @@ export async function getStaticProps() {
 const blog = ({ postsToShow, page, showNext, blockMap }) => {
   return (
     <Container title={BLOG.title} description={BLOG.description}>
-      {/*<Hero blockMap={blockMap} />*/}
+      {/* <Hero blockMap={blockMap} />  */}
       {postsToShow.map((post) => (
         <BlogPost key={post.id} post={post} />
       ))}
