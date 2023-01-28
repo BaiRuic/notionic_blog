@@ -21,14 +21,37 @@ const Code = dynamic(() =>
   import('react-notion-x/build/third-party/code').then(async (m) => {
     // additional prism syntaxes
     await Promise.all([
+      import('prismjs/components/prism-markup-templating.js'),
       import('prismjs/components/prism-markup.js'),
       import('prismjs/components/prism-bash.js'),
+      import('prismjs/components/prism-c.js'),
+      import('prismjs/components/prism-cpp.js'),
+      import('prismjs/components/prism-csharp.js'),
+      import('prismjs/components/prism-docker.js'),
+      import('prismjs/components/prism-java.js'),
+      import('prismjs/components/prism-js-templates.js'),
+      import('prismjs/components/prism-coffeescript.js'),
       import('prismjs/components/prism-diff.js'),
+      import('prismjs/components/prism-git.js'),
       import('prismjs/components/prism-go.js'),
+      import('prismjs/components/prism-graphql.js'),
+      import('prismjs/components/prism-handlebars.js'),
+      import('prismjs/components/prism-less.js'),
+      import('prismjs/components/prism-makefile.js'),
+      import('prismjs/components/prism-markdown.js'),
+      import('prismjs/components/prism-objectivec.js'),
+      import('prismjs/components/prism-ocaml.js'),
+      import('prismjs/components/prism-python.js'),
+      import('prismjs/components/prism-reason.js'),
       import('prismjs/components/prism-rust.js'),
-      import('prismjs/components/prism-yaml.js'),
-      import('prismjs/components/prism-javascript.js'),
-      import('prismjs/components/prism-typescript.js')
+      import('prismjs/components/prism-sass.js'),
+      import('prismjs/components/prism-scss.js'),
+      import('prismjs/components/prism-solidity.js'),
+      import('prismjs/components/prism-sql.js'),
+      import('prismjs/components/prism-stylus.js'),
+      import('prismjs/components/prism-swift.js'),
+      import('prismjs/components/prism-wasm.js'),
+      import('prismjs/components/prism-yaml.js')
     ])
     return m.Code
   }), { ssr: true }
@@ -38,13 +61,17 @@ const Collection = dynamic(() =>
   import('react-notion-x/build/third-party/collection').then((m) => m.Collection), { ssr: true }
 )
 
-// const Equation = dynamic(() =>
-//   import('react-notion-x/build/third-party/equation').then((m) => m.Equation), { ssr: true }
-// )
+const Equation = dynamic(() =>
+  import('react-notion-x/build/third-party/equation').then((m) => m.Equation), { ssr: true }
+)
 
-// const Modal = dynamic(
-//   () => import('react-notion-x/build/third-party/modal').then((m) => m.Modal), { ssr: false }
-// )
+const Pdf = dynamic(() =>
+  import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf), { ssr: false }
+)
+
+const Modal = dynamic(() =>
+  import('react-notion-x/build/third-party/modal').then((m) => m.Modal), { ssr: false }
+)
 
 // TODO: Dirty code! 也许是上游 Notion-X 的一个 bug, 不太确定. 暂时通过监控 DOM 变化来删除重复出现的代码块内容.
 // Watch DOM changes, detail here: https://github.com/tangly1024/NotionNext/pull/227
@@ -178,6 +205,9 @@ const Layout = ({ children, blockMap, frontMatter, fullWidth = false, subPage = 
                 components={{
                   Code,
                   Collection,
+                  Equation,
+                  Pdf,
+                  Modal,
                   nextLink: Link
                   // nextImage: Image
                 }}
