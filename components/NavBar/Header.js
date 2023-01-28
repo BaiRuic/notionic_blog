@@ -189,8 +189,8 @@ const Header = ({ navBarTitle, fullWidth }) => {
               <Image
                   src='/header.png'
                   alt='Logo'
-                  width={20}
-                  height={20}
+                  width={24}
+                  height={24}
                 />
               </motion.div>
             </a>
