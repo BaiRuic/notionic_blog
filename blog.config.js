@@ -18,7 +18,7 @@ const BLOG = {
     newsletter: false,
     notes: true,
     projects: true,
-    contact: true,
+    contact: false,
     books: true,
     friends: true
   },
@@ -66,10 +66,10 @@ const BLOG = {
   },
   comment: {
     // support provider: utterances, supacomments
-    provider: 'supacomments', // leave it empty if you don't need any comment plugin
+    provider: '', // leave it empty if you don't need any comment plugin
     supaCommentsConfig: {
-      supabaseUrl: 'https://advwrlnrsrvlfyzemqbf.supabase.co', // The url of your Supabase instance
-      supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkdndybG5yc3J2bGZ5emVtcWJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQ4MzAzNTEsImV4cCI6MTk5MDQwNjM1MX0.yCDeybKhOzlDGEstNOAqXIHGV7uWoL_sRDf5vMa0Brc' // The anonymous key of your Supabase instance
+      supabaseUrl: '', // The url of your Supabase instance
+      supabaseAnonKey: '' // The anonymous key of your Supabase instance
     },
     utterancesConfig: {
       repo: ''
