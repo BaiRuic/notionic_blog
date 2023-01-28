@@ -2,7 +2,7 @@ const BLOG = {
   title: 'BaiRuic',
   author: 'BaiRuic',
   email: 'brc730@outlook.com',
-  link: process.env.LINK, // DO NOT CHANGE THIS! Edit .env file!,
+  link: process.env.NEXT_PUBLIC_BLOG_LINK,   // DO NOT CHANGE THIS! Edit .env file!,
   newsletter: 'Weekly',
   description: 'This is the way!',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
