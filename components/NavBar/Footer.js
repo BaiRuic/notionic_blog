@@ -123,7 +123,7 @@ const Footer = ({ fullWidth }) => {
             {BLOG.showWeChatPay && (
               <button
                 onClick={() => setShowPay((showPay) => !showPay)}
-                className='hover:bg-gray-200 dark:hover:bg-gray-700 inline-flex py-1 px-2 rounded-lg items-center'
+                className={showPay ? 'bg-gray-200 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 inline-flex py-1 px-2 rounded-lg items-center' : 'hover:bg-gray-200 dark:hover:bg-gray-700 inline-flex py-1 px-2 rounded-lg items-center'}
               >
                 <ThumbUpIcon className='w-5 h-5' />
                 <span className='font-light inline-block m-1'>{t.HERO.HOME.DONATE}</span>
