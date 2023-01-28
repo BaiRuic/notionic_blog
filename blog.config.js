@@ -29,7 +29,7 @@ const BLOG = {
   defaultCover: '/cover.jpg',
   socialLink: {
     twitter: '',
-    github: 'https://github.com/izuolan',
+    github: 'https://github.com/bairuic',
     telegram: ''
   },
   seo: {
