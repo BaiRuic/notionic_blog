@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 export const Contact = () => {
   const { locale } = useRouter()
   const t = lang[locale]
+  const email_to = "mailto:" + BLOG.email
   return (
     <Container title={BLOG.title} description={BLOG.description}>
       <div className='mb-8 md:mb-16 text-gray-600 dark:text-gray-200'>
@@ -15,6 +16,13 @@ export const Contact = () => {
         </h2>
         <p className='max-w-screen-md font-light md:text-lg text-center mx-auto'>
           {t.CONTACT.DESCRIPTION}
+          <a
+            href={email_to}
+            className='hover:text-indigo-500 active:text-indigo-600 underline transition duration-100'
+            target="_blank" 
+            rel="external">
+            {t.CONTACT.EMAIL_DESCRIPTION} 
+          </a>
         </p>
         {/* <p className='max-w-screen-md font-light md:text-lg text-center mx-auto'>
           {t.CONTACT.TG_DESCRIPTION}
@@ -26,7 +34,7 @@ export const Contact = () => {
           </a>
         </p>  */}
       </div>
-      <ContactForm />
+      {/* <ContactForm /> */}
     </Container>
   )
 }
