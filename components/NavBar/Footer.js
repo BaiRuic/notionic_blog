@@ -12,7 +12,7 @@ import {
 } from '@heroicons/react/outline'
 import Social from '../Common/Social.js'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import WechatPay from '@/components/Post/WechatPay'
 import Vercel from '@/components/Common/Vercel'
 
@@ -64,6 +64,19 @@ const Footer = ({ fullWidth }) => {
       show: BLOG.pagesShow.contact
     }
   ]
+
+  // 定义 showPay 显示超过10s后自动取消显示；若不想要此功能，直接将 useEffect 注释即可
+  const timerRef = useRef()
+  useEffect(() => {
+    if (showPay) {
+      timerRef.current = setTimeout(() => {
+        setShowPay(false)
+      }, 8000)
+    }
+    return () => {
+      clearTimeout(timerRef.current)
+    }
+  }, [showPay])
 
   return (
     <motion.div
