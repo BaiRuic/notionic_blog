@@ -1,4 +1,8 @@
 module.exports = {
+  // time in seconds of no pages generating during static
+  // generation before timing out
+  // 解决部分子页面 60s内无法渲染完成的问题，调整到 n / 1000 分钟
+  staticPageGenerationTimeout: 3000,
   webpack5: true,
   eslint: {
     dirs: ['components', 'layouts', 'lib', 'pages']
