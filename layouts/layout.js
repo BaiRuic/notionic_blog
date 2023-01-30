@@ -148,7 +148,9 @@ const Layout = ({ children, blockMap, frontMatter, fullWidth = false, subPage = 
   //   frontMatter,
   //   blockMap
   // })
-
+  // 只要子页面的标题和post.title不一样，就判断为是子页面，
+  // 然后 浏览器标签上的标题 就会 是 父页面 |子页面
+  // 且正文上面 多了一个返回
   const subPageTitle = getPageTitle(blockMap)
   useEffect(() => {
     if (frontMatter.title !== subPageTitle) {
@@ -167,6 +169,7 @@ const Layout = ({ children, blockMap, frontMatter, fullWidth = false, subPage = 
     >
       <motion.div className='flex flex-row'>
         <article className='flex-none md:overflow-x-visible overflow-x-scroll w-full'>
+          {/* 如果是子页面（真正的 page block，而不是链接自别处的页面），那么需要有一个返回的其父页面的链接 */ }
           {showSubPageTitle && (
             <Link passHref href={`${BLOG.path}/${frontMatter.slug}`} scroll={false}>
               <a className='text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 transition duration-100'>
@@ -178,6 +181,7 @@ const Layout = ({ children, blockMap, frontMatter, fullWidth = false, subPage = 
           <h1 className='font-bold text-3xl text-black dark:text-white'>
             {subPageTitle}
           </h1>
+          {/* type=page是没有标签 和创建时间的 的 */}
           {frontMatter.type[0] !== 'Page' && (
             <nav className='flex mt-5 mb-10 items-start text-gray-500 dark:text-gray-400'>
               <div className='mr-2 mb-4 md:ml-0'>
@@ -195,7 +199,9 @@ const Layout = ({ children, blockMap, frontMatter, fullWidth = false, subPage = 
               )}
             </nav>
           )}
+          {/* 还不知道children是什么  */}
           {children}
+          {/* 正文内容的渲染 */}
           {blockMap && (
             <div className='-mt-4'>
               <NotionRenderer
@@ -215,9 +221,11 @@ const Layout = ({ children, blockMap, frontMatter, fullWidth = false, subPage = 
             </div>
           )}
         </article>
+        {/* 右侧导航标记，左箭头、回到开头 箭头等 */}
         <Aside subPageTitle={subPageTitle} frontMatter={frontMatter} />
       </motion.div>
       {/*  <PostFooter />  */}
+      {/* utterances评论系统是根据 frontMatter.id 来索引的 */}
       <Comments frontMatter={frontMatter} />
     </Container>
   )
