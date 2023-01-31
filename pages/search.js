@@ -1,4 +1,4 @@
-import { filterSearchedPosts, getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
+import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
 import SearchLayout from '@/layouts/search'
 
 export default function search({ tags, posts }) {
@@ -9,10 +9,11 @@ export async function getStaticProps() {
   const allPosts = await getAllPosts({ onlyNewsletter: false })
   const excludeSlug = ['index', 'newsletter', 'notes', 'about', 'projects', 'friend', 'books']
   // 移除不需要显示在搜索页面的 post
-  const posts = filterSearchedPosts({
-    posts: allPosts,
-    excludeSlug: excludeSlug
-  })
+  const posts = allPosts.filter((post) => !excludeSlug.includes(post.slug))
+  // const posts = filterSearchedPosts({
+  //   posts: allPosts,
+  //   excludeSlug: excludeSlug
+  // })
 
   const tags = getAllTagsFromPosts(posts)
   return {
