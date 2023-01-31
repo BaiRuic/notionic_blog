@@ -7,11 +7,11 @@ export default function search({ tags, posts }) {
 }
 export async function getStaticProps() {
   // 只能搜索 notionPageID下的 页面。
-  const all_posts = await getAllPosts({ onlyNewsletter: false })
+  const allPosts = await getAllPosts({ onlyNewsletter: false })
   const excludeSlug = ['index', 'newsletter', 'notes', 'about', 'projects', 'friend', 'books']
   // 移除不需要显示在搜索页面的 post
   const posts = filterSearchedPosts({
-    posts: all_posts,
+    posts: allPosts,
     excludeSlug: excludeSlug
   })
 
