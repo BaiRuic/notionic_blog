@@ -1,6 +1,6 @@
 import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
 import SearchLayout from '@/layouts/search'
-import filterSearchedPosts from './filterSearchedPosts'
+import {filterSearchedPosts} from '@/lib/notion'
 
 export default function search({ tags, posts }) {
   return <SearchLayout tags={tags} posts={posts} />
