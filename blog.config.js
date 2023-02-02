@@ -2,7 +2,7 @@ const BLOG = {
   title: 'BaiRuic',
   author: 'BaiRuic',
   email: 'brc730@outlook.com',
-  link: process.env.NEXT_PUBLIC_BLOG_LINK,   // DO NOT CHANGE THIS! Edit .env file!,
+  link: process.env.NEXT_PUBLIC_BLOG_LINK, // DO NOT CHANGE THIS! Edit .env file!,
   newsletter: 'Weekly',
   description: 'This is the way!',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
@@ -36,7 +36,7 @@ const BLOG = {
     keywords: ['Notionic', 'BaiRuic', 'Blog'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
-  notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS! Edit .env file!
+  notionPageId: '829ba2ae1d46451184e07aa36851c331' || process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS! Edit .env file!
   notionSpacesId: process.env.NOTION_SPACES_ID, // DO NOT CHANGE THIS! Edit .env file!
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
   notionDomain: 'bairuic.notion.site',

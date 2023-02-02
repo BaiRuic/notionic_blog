@@ -11,7 +11,8 @@ const Aside = ({ subPageTitle, frontMatter, toc }) => {
   // const [showPay, setShowPay] = useState(false)
   const [showButton, setShowButton] = useState(false)
   const [showSubPageTitle, setShowSubPageTitle] = useState(false)
-  const showToc = true
+  // 只有 目录大于3才显示，后续 3 可以改为环境变量
+  const showToc = toc.length > 3
 
   useEffect(() => {
     if (frontMatter.title !== subPageTitle) {
