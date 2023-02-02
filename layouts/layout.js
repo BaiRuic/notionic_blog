@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { NotionRenderer } from 'react-notion-x'
-import { getPageTitle, getPageBreadcrumbs } from 'notion-utils'
+import { getPageTitle } from 'notion-utils'
 
 import Aside from '@/components/Post/Aside'
 import Comments from '@/components/Post/Comments'
