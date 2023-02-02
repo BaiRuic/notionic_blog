@@ -1,15 +1,17 @@
 import BLOG from '@/blog.config'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Catalog from './Catalog'
 
 // import WechatPay from '@/components/Post/WechatPay'
 // import { ThumbUpIcon, ChevronLeftIcon, ArrowUpIcon } from '@heroicons/react/outline'
 import { ChevronLeftIcon, ArrowUpIcon } from '@heroicons/react/outline'
 
-const Aside = ({ subPageTitle, frontMatter }) => {
+const Aside = ({ subPageTitle, frontMatter, toc }) => {
   // const [showPay, setShowPay] = useState(false)
   const [showButton, setShowButton] = useState(false)
   const [showSubPageTitle, setShowSubPageTitle] = useState(false)
+  const showToc = true
 
   useEffect(() => {
     if (frontMatter.title !== subPageTitle) {
@@ -23,11 +25,13 @@ const Aside = ({ subPageTitle, frontMatter }) => {
       }
     })
   }, [frontMatter, subPageTitle])
+  // console.log('aside', frontMatter.id, toc)
   return (
     <>
-      <aside className='hidden sticky md:flex md:flex-col md:items-center md:self-start md:ml-8 md:inset-y-1/2'>
-        <div className='flex flex-col items-center text-center'>
-          {/* <div className='bg-gray-100 dark:bg-gray-700 grid rounded-lg block p-2 gap-y-5 nav'>  */}
+      <aside className='sticky-top-148px z-101 flex-1 flex flex-col items-center'>
+        <div className='hidden sticky md:flex md:flex-col md:items-center md:self-start md:ml-8 md:inset-y-1/2'>
+          <div className='flex flex-col items-center text-center'>
+            {/* <div className='bg-gray-100 dark:bg-gray-700 grid rounded-lg block p-2 gap-y-5 nav'>  */}
             {/* {BLOG.showWeChatPay && (
               <button
                 onClick={() => setShowPay((showPay) => !showPay)}
@@ -53,7 +57,13 @@ const Aside = ({ subPageTitle, frontMatter }) => {
                 <ArrowUpIcon className='w-5 h-5' />
               </button>
             )}
-          {/* </div>  */}
+            {/* </div>  */}
+          </div>
+        </div>
+        <div>
+          {showToc && (
+            <Catalog toc={toc} />
+          )}
         </div>
       </aside>
       {/* {showPay && <WechatPay />}  */}

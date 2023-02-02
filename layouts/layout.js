@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { NotionRenderer } from 'react-notion-x'
-import { getPageTitle } from 'notion-utils'
+import { getPageTitle, getPageBreadcrumbs } from 'notion-utils'
 
 import Aside from '@/components/Post/Aside'
 import Comments from '@/components/Post/Comments'
@@ -16,6 +16,8 @@ import TagItem from '@/components/Common/TagItem'
 
 import { ChevronLeftIcon } from '@heroicons/react/outline'
 import { motion } from 'framer-motion'
+
+import { getPageTableOfContents } from '@/lib/notion/getPageTableOfContents'
 
 const Code = dynamic(() =>
   import('react-notion-x/build/third-party/code').then(async (m) => {
@@ -159,6 +161,14 @@ const Layout = ({ children, blockMap, frontMatter, fullWidth = false, subPage = 
     domWatcher(subPage)
   }, [frontMatter, subPageTitle, subPage])
 
+  // 页面目录
+  console.log('pageId', frontMatter.id, frontMatter.title)
+  const post = {}
+  post.content = Object.keys(blockMap?.block || {})
+  post.blockMap = blockMap
+  const pageToc = getPageTableOfContents(post, blockMap)
+  console.log('Toc', pageToc)
+
   return (
     <Container
       title={`${frontMatter.title}${showSubPageTitle ? ' | ' + subPageTitle : ''}`}
@@ -208,6 +218,9 @@ const Layout = ({ children, blockMap, frontMatter, fullWidth = false, subPage = 
                 recordMap={blockMap}
                 mapPageUrl={mapPageUrl}
                 previewImages={BLOG.previewImagesEnabled}
+                // 根据 nextjs-notion-starter-kik修改
+                // showTableOfContents={showTableOfContents}
+                // minTableOfContentsItems={minTableOfContentsItems}
                 components={{
                   Code,
                   Collection,
@@ -222,7 +235,7 @@ const Layout = ({ children, blockMap, frontMatter, fullWidth = false, subPage = 
           )}
         </article>
         {/* 右侧导航标记，左箭头、回到开头 箭头等 */}
-        <Aside subPageTitle={subPageTitle} frontMatter={frontMatter} />
+        <Aside subPageTitle={subPageTitle} frontMatter={frontMatter} toc={pageToc} />
       </motion.div>
       {/*  <PostFooter />  */}
       {/* utterances评论系统是根据 frontMatter.id 来索引的 */}
