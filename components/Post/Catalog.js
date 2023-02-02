@@ -69,10 +69,11 @@ const Catalog = ({ toc }) => {
 
   // 抄的一段代码...
   const cs = (...classes) => classes.filter(a => a).join(' ')
-
+  // notion-aside-table-of-contents-header
+  // font-normal text-lg break-words text-center
   return (
-    <div class='notion-aside-table-of-contents'>
-      <div class='notion-aside-table-of-contents-header'>
+    <div className="flex flex-col items-center max-h-screen min-w-222 overflow-auto bg-bg-color rounded-lg">
+      <div className="font-normal text-lg text-center">
         {t.LAYOUT.TABLE_OF_CONTENTS}
       </div>
       {/* <div className='w-full py-3'>
@@ -80,7 +81,7 @@ const Catalog = ({ toc }) => {
       </div>  */}
 
       <div ref={tRef}>
-        <nav class='notion-table-of-contents'>
+        <nav className='notion-table-of-contents'>
           {toc.map((tocItem) => {
             const id = uuidToId(tocItem.id)
             tocIds.push(id)
@@ -88,7 +89,7 @@ const Catalog = ({ toc }) => {
               <a
                 key={id}
                 href={`#${id}`}
-                class={cs(
+                className={cs(
                   'notion-table-of-contents-item',
                   `notion-table-of-contents-item-indent-level-${tocItem.indentLevel}`,
                   activeSection === id &&
@@ -96,7 +97,7 @@ const Catalog = ({ toc }) => {
                 )}
               >
                 <span
-                  class='notion-table-of-contents-item-body'
+                  className='notion-table-of-contents-item-body'
                   style={{
                     display: 'inline-block',
                     marginLeft: tocItem.indentLevel * 16

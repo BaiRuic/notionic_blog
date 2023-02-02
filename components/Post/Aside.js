@@ -26,9 +26,16 @@ const Aside = ({ subPageTitle, frontMatter, toc }) => {
     })
   }, [frontMatter, subPageTitle])
   // console.log('aside', frontMatter.id, toc)
+  // hidden sticky md:flex md:flex-col md:items-center md:self-start md:ml-8 md:inset-y-1/2
+  // notion-aside:sticky-top-148px z-101 flex-1 flex flex-col items-start items-center
   return (
     <>
-      <aside className='sticky-top-148px z-101 flex-1 flex flex-col items-center'>
+      <aside className='hidden sticky md:flex md:flex-col md:items-center md:self-start md:ml-8 md:inset-y-1/3'>
+        <div>
+          {showToc && (
+            <Catalog toc={toc} />
+          )}
+        </div>
         <div className='hidden sticky md:flex md:flex-col md:items-center md:self-start md:ml-8 md:inset-y-1/2'>
           <div className='flex flex-col items-center text-center'>
             {/* <div className='bg-gray-100 dark:bg-gray-700 grid rounded-lg block p-2 gap-y-5 nav'>  */}
@@ -59,11 +66,6 @@ const Aside = ({ subPageTitle, frontMatter, toc }) => {
             )}
             {/* </div>  */}
           </div>
-        </div>
-        <div>
-          {showToc && (
-            <Catalog toc={toc} />
-          )}
         </div>
       </aside>
       {/* {showPay && <WechatPay />}  */}
