@@ -52,7 +52,7 @@ const Footer = ({ fullWidth }) => {
     {
       id: 1,
       name: t.NAV.FRINEDS,
-      to: '/friends',
+      to: '/links',
       icon: <UsersIcon className='inline-block mb-1 h-5 w-5' />,
       show: BLOG.pagesShow.friends
     },
