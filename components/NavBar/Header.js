@@ -118,13 +118,13 @@ const NavBar = () => {
                 (link) =>
                   link.show && (
                     <Link passHref key={link.id} href={link.to} scroll={false}>
-                      <a
+                      <button
                         onClick={() => setShowMenu((showMenu) => !showMenu)}
                         className='hover:bg-gray-100 dark:hover:bg-gray-600 font-light block justify-between w-full px-4 py-2 leading-5'
                       >
                         {link.icon}
                         <span className='m-1'>{link.name}</span>
-                      </a>
+                      </button>
                     </Link>
                   )
               )}
@@ -184,7 +184,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
       >
         <div className='flex items-center'>
           <Link passHref href='/' scroll={false}>
-            <a aria-label={BLOG.title}>
+            <button aria-label={BLOG.title}>
               <motion.div className='h-6 hover:text-blue-500 dark:hover:text-blue-500 fill-current'>
               <Image
                   src='/header.png'
@@ -193,7 +193,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
                   height={24}
                 />
               </motion.div>
-            </a>
+            </button>
           </Link>
           {navBarTitle ? (
             <p

@@ -23,10 +23,10 @@ const Page404 = ({ statusCode }) => {
             {t.ERROR.HELP_TEXT}
           </p>
 
-          <Link href='/' scroll={false}>
-            <a className='inline-block bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-sm md:text-base font-semibold text-center rounded-lg outline-none px-8 py-3'>
+          <Link href="/" scroll={false}>
+            <button className="inline-block bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-sm md:text-base font-semibold text-center rounded-lg outline-none px-8 py-3" type="button">
               {t.ERROR.BACK_TO_HOME}
-            </a>
+            </button>
           </Link>
         </div>
       </div>

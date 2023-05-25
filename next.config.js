@@ -4,9 +4,9 @@ module.exports = {
   // 解决部分子页面 60s内无法渲染完成的问题，调整到 n / 1000 分钟
   staticPageGenerationTimeout: 3000,
   // webpack5: true,
-  eslint: {
-    dirs: ['components', 'layouts', 'lib', 'pages']
-  },
+  // eslint: {
+  //   dirs: ['components', 'layouts', 'lib', 'pages']
+  // },
   // webpack: (config, { dev, isServer }) => {
   //   // Replace React with Preact only in client production build
   //   if (!dev && !isServer) {

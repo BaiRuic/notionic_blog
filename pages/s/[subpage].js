@@ -123,7 +123,7 @@ export async function getStaticProps({ params: { subpage } }) {
   }
 
   if (!pageAllowed(blockMap)) {
-    return { props: { post: null, blockMap: null } }
+    return {props: { post: null, blockMap: null }}
   }
 
   // 此处如果post为 null,而blockMap不为空， 只有一种可能那就是：

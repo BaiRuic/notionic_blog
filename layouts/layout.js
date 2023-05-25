@@ -172,10 +172,10 @@ const Layout = ({ children, blockMap, frontMatter, fullWidth = false, subPage = 
           {/* 如果是子页面（真正的 page block，而不是链接自别处的页面），那么需要有一个返回的其父页面的链接 */ }
           {showSubPageTitle && (
             <Link passHref href={`${BLOG.path}/${frontMatter.slug}`} scroll={false}>
-              <a className='text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 transition duration-100'>
+              <button  className='text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300 transition duration-100'>
                 <ChevronLeftIcon className='inline-block mb-1 h-5 w-5' />
                 <span className='m-1'>{frontMatter.title}</span>
-              </a>
+              </button >
             </Link>
           )}
           <h1 className='font-bold text-3xl text-black dark:text-white'>
