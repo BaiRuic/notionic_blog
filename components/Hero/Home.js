@@ -10,12 +10,14 @@ import {
   RssIcon,
   ClipboardCheckIcon
 } from '@heroicons/react/outline'
-import dynamic from 'next/dynamic'
-import { NotionRenderer } from 'react-notion-x'
+// import dynamic from 'next/dynamic'
+// import { NotionRenderer } from 'react-notion-x'
+import NotionRenderer from '@/components/Post/NotionRenderer'
 
-const Collection = dynamic(() =>
-  import('react-notion-x/build/third-party/collection').then((m) => m.Collection), { ssr: true }
-)
+
+// const Collection = dynamic(() =>
+//   import('react-notion-x/build/third-party/collection').then((m) => m.Collection), { ssr: true }
+// )
 
 const Hero = ({ blockMap }) => {
   const [showCopied, setShowCopied] = useState(false)
@@ -36,8 +38,9 @@ const Hero = ({ blockMap }) => {
         <div className='flex flex-col md:w-3/5 md:items-start mb-6 md:mb-0 text-left'>
           <NotionRenderer
             className='md:ml-0'
-            recordMap={blockMap}
-            components={{ Collection }}
+            blockMap={blockMap}
+            frontMatter={{}}
+            subPageTitle={null}
           />
           <Social />
           <div className='flex flex-col sm:flex-row sm:justify-center gap-4 mt-6'>

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useCallback, useState, useRef } from 'react'
 import Link from 'next/link'
 import BLOG from '@/blog.config'
 import Image from 'next/image'
@@ -16,6 +16,7 @@ import {
 import Social from '../Common/Social.js'
 import ThemeSwitcher from './ThemeSwitcher.js'
 import LangSwitcher from './LangSwitcher.js'
+// import Logo from '@/components/Common/Logo'
 import { motion } from 'framer-motion'
 
 const NavBar = () => {
@@ -99,7 +100,7 @@ const NavBar = () => {
         )}
       </ul>
 
-      <div className='pb-1 block'>
+      <div className='nav-func-btn block'>
         <ThemeSwitcher />
         <LangSwitcher />
       </div>
@@ -144,22 +145,22 @@ const NavBar = () => {
 const Header = ({ navBarTitle, fullWidth }) => {
   const [showTitle, setShowTitle] = useState(false)
   const useSticky = !BLOG.autoCollapsedNavBar
-  const navRef = useRef(null)
-  const sentinelRef = useRef([])
-  const handler = ([entry]) => {
-    if (navRef && navRef.current && useSticky) {
-      if (!entry.isIntersecting && entry !== undefined) {
-        navRef.current?.classList.add('sticky-nav-full')
-      } else {
-        navRef.current?.classList.remove('sticky-nav-full')
-      }
+  const navRef = useRef(/** @type {HTMLDivElement} */ undefined)
+  const sentinelRef = useRef(/** @type {HTMLDivElement} */ undefined)
+  const handler = useCallback(([entry]) => {
+    if (useSticky && navRef.current) {
+      navRef.current?.classList.toggle('sticky-nav-full', !entry.isIntersecting)
     } else {
       navRef.current?.classList.add('remove-sticky')
     }
-  }
+  }, [useSticky])  
   useEffect(() => {
+    const sentinelEl = sentinelRef.current
+    const observer = new window.IntersectionObserver(handler)
+    observer.observe(sentinelEl)
+
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 100) {
+      if (window.pageYOffset > 400) {
         setShowTitle(true)
       } else {
         setShowTitle(false)
@@ -173,7 +174,11 @@ const Header = ({ navBarTitle, fullWidth }) => {
     //   if (sentinalRef.current) obvserver.unobserve(sentinalRef.current)
     // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sentinelRef])
+    return () => {
+      sentinelEl && observer.unobserve(sentinelEl)
+    }
+  }, [handler, sentinelRef])
+  
   return (
     <>
       <div className='observer-element h-4 md:h-12' ref={sentinelRef}></div>

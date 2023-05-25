@@ -31,8 +31,9 @@ const NewsletterHero = ({ blockMap }) => {
         <div className='flex flex-col md:w-4/5 md:items-start mb-6 md:mb-0 md:text-left'>
           <NotionRenderer
             className='md:ml-0'
-            recordMap={blockMap}
-            components={{ Collection }}
+            blockMap={blockMap}
+            frontMatter={{}}
+            subPageTitle={null}
           />
           <Social />
           <h2 className='text-xl pt-8 pb-4 font-light text-gray-500 dark:text-day'>
