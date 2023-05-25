@@ -99,8 +99,10 @@ const NavBar = () => {
         )}
       </ul>
 
-      <ThemeSwitcher />
-      <LangSwitcher />
+      <div className='pb-1 block'>
+        <ThemeSwitcher />
+        <LangSwitcher />
+      </div>
 
       {/* Mobile Phone Menu */}
       <div className='md:hidden mr-2 block '>
@@ -183,17 +185,15 @@ const Header = ({ navBarTitle, fullWidth }) => {
         ref={navRef}
       >
         <div className='flex items-center'>
-          <Link passHref href='/' scroll={false}>
-            <button aria-label={BLOG.title}>
-              <motion.div className='h-6 hover:text-blue-500 dark:hover:text-blue-500 fill-current'>
-              <Image
-                  src='/header.png'
-                  alt='Logo'
-                  width={24}
-                  height={24}
-                />
-              </motion.div>
-            </button>
+          <Link passHref href='/' scroll={false} aria-label={BLOG.title}>
+            <motion.div className='h-6 hover:text-blue-500 dark:hover:text-blue-500 fill-current'>
+            <Image
+                src='/header.png'
+                alt='Logo'
+                width={24}
+                height={24}
+              />
+            </motion.div>
           </Link>
           {navBarTitle ? (
             <p

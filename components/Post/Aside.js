@@ -37,10 +37,13 @@ const Aside = ({ subPageTitle, frontMatter }) => {
               </button>
             )}  */}
             {showSubPageTitle && (
-              <Link passHref href={`${BLOG.path}/${frontMatter.slug}`} scroll={false}>
-                <button className='bg-gray-100 dark:bg-gray-700 grid rounded-lg block p-2 gap-y-5 nav text-gray-600 dark:text-day hover:text-gray-400 dark:hover:text-gray-400'>
-                  <ChevronLeftIcon className='w-5 h-5' />
-                </button>
+              <Link 
+                passHref 
+                href={`${BLOG.path}/${frontMatter.slug}`} 
+                scroll={false}
+                className='bg-gray-100 dark:bg-gray-700 grid rounded-lg block p-2 gap-y-5 nav text-gray-600 dark:text-day hover:text-gray-400 dark:hover:text-gray-400'
+              >
+                <ChevronLeftIcon className='w-5 h-5' />
               </Link>
             )}
             {showButton && (
