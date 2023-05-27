@@ -4,8 +4,6 @@ import { useTheme } from 'next-themes' // 用来弄主题
 
 const Utterances = ({ issueTerm, layout }) => {
   const { theme } = useTheme();
-  console.log(theme)
-  console.log(useTheme())
   useEffect(() => {
     const curTheme =
         theme === 'auto'
