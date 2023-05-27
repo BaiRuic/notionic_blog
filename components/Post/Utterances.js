@@ -1,11 +1,16 @@
 import BLOG from '@/blog.config'
 import { useEffect } from 'react'
+import { useTheme } from 'next-themes' // 用来弄主题
+
 const Utterances = ({ issueTerm, layout }) => {
+  const { theme } = useTheme();
+  console.log(theme)
+  console.log(useTheme())
   useEffect(() => {
-    const theme =
-      BLOG.appearance === 'auto'
+    const curTheme =
+        theme === 'auto'
         ? 'preferred-color-scheme'
-        : BLOG.appearance === 'light'
+        : theme === 'light'
           ? 'github-light'
           : 'github-dark'
     const script = document.createElement('script')
@@ -15,12 +20,12 @@ const Utterances = ({ issueTerm, layout }) => {
     script.setAttribute('async', true)
     script.setAttribute('repo', BLOG.comment.utterancesConfig.repo)
     script.setAttribute('issue-term', issueTerm)
-    script.setAttribute('theme', theme)
+    script.setAttribute('theme', curTheme)
     anchor.appendChild(script)
     return () => {
       anchor.innerHTML = ''
     }
-  })
+  },[theme])
   return (
     <>
       <div

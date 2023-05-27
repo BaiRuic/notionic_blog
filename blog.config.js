@@ -42,7 +42,7 @@ const BLOG = {
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
   notionDomain: 'bairuic.notion.site',
   telegramToken: process.env.TELEGRAM_TOKEN, // The token of your Telegram bot
-  telegramChatId: '', // The chat id of your Telegram bot
+  telegramChatId: '821465373', // The chat id of your Telegram bot
   telegramChannelUrl: '', // The link of your Telegram channel
   telegramChannelName: '', // The name of your Telegram channel
   craftConfigShareUrl: '', // The link to share your craft config
@@ -67,13 +67,13 @@ const BLOG = {
   },
   comment: {
     // support provider: utterances, supacomments
-    provider: '', // leave it empty if you don't need any comment plugin
+    provider: 'utterances', // leave it empty if you don't need any comment plugin
     supaCommentsConfig: {
-      supabaseUrl: '', // The url of your Supabase instance
-      supabaseAnonKey: '' // The anonymous key of your Supabase instance
+      supabaseUrl: 'https://ausnmqzkltuymwllzeox.supabase.co', // The url of your Supabase instance
+      supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1c25tcXprbHR1eW13bGx6ZW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUwOTY3NjMsImV4cCI6MjAwMDY3Mjc2M30.ILQhZ5L8tpvG_FR88FijTBcRwb0j6xnkPCjiJthbFNc' // The anonymous key of your Supabase instance
     },
     utterancesConfig: {
-      repo: ''
+      repo: 'BaiRuic/Blog_Comment'
     }
   },
   isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
