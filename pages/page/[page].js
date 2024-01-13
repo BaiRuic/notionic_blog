@@ -4,6 +4,8 @@ import Pagination from '@/components/Pagination'
 import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
 
+//这个文件, 对应地址栏是blog_url/page/2 这种形式
+
 const Page = ({ postsToShow, page, showNext }) => {
   return (
     <Container>
@@ -16,7 +18,7 @@ const Page = ({ postsToShow, page, showNext }) => {
 
 export async function getStaticProps(context) {
   const { page } = context.params // Get Current Page No.
-  const posts = await getAllPosts({ onlyNewsletter: false })
+  const posts = await getAllPosts({ onlyPost:true }) // 每一页都只显示 post 类型的页面
   const postsToShow = posts.slice(
     BLOG.postsPerPage * (page - 1),
     BLOG.postsPerPage * page
@@ -33,8 +35,9 @@ export async function getStaticProps(context) {
   }
 }
 
+
 export async function getStaticPaths() {
-  const posts = await getAllPosts({ onlyNewsletter: false })
+  const posts = await getAllPosts({ onlyPost:true })
   const totalPosts = posts.length
   const totalPages = Math.ceil(totalPosts / BLOG.postsPerPage)
   return {
