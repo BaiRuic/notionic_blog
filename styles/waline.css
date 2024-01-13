@@ -1,0 +1,101 @@
+@import '@waline/client/dist/waline.css';
+/* 很多字段是错误的，需要按照浏览器F12下的样式来修改 */
+:root {
+    /* 字体大小 */
+    --waline-font-size: 17px;
+
+    /* 常规颜色 */
+    --waline-white: #fff;
+    /*提交按钮的字体颜色 */
+
+    --waline-light-grey: #999;
+    --waline-dark-grey: #666;
+
+    /* 主题色 */
+    --waline-theme-color: #27ae60;
+    --waline-active-color: #2ecc71;
+
+    --waline-color: #444;
+    /* 评论区域的字体颜色 */
+
+    --waline-bgcolor: #f6f8fa;
+    /* 评论区域的背景颜色 */
+
+    --waline-bg-color: rgba(244, 95, 95, 1);
+    /* 无用 */
+
+    --waline-bgcolor-light: #f6f8fa;
+    /* 点击要输入时，背景颜色 */
+
+
+    --waline-bgcolor-hover: #f6f8fa;
+    --waline-border-color: #ddd;
+    /* 分割线的颜色 */
+
+    --waline-disable-bg-color: #f8f8f8;
+    /* 禁用背景颜色 */
+
+    --waline-disable-color: #bbb;
+    /* 禁用颜色 */
+
+    --waline-code-bgcolor: #e2e9f0;
+    /* 代码块背景颜色 */
+
+    /* 特殊颜色 */
+    --waline-bq-color: #f0f0f0;
+    /* 引用颜色 */
+
+    /* 头像 */
+    --waline-avatar-size: 3.0rem;
+    /* 头像大小 */
+
+    --waline-m-avatar-size: calc(var(--waline-avatar-size) * 9 / 13);
+    /* 移动端头像大小 */
+
+    /* 徽章 */
+    --waline-badge-color: #3498db;
+    /* 徽章颜色 */
+    --waline-badge-font-size: 0.775em;
+    /* 徽章字体大小 */
+
+    /* 信息  此处的信息是指 评论用户名称下面的CloudflareEdge120.0Windows 11 以及评论时间 */
+    --waline-info-bgcolor: rgba(0, 0, 0, 0);
+    /* 信息背景颜色 */
+    --waline-info-color: #999;
+
+    /* 信息颜色*/
+    --waline-info-font-size: 0.625em;
+    /* 信息字体大小 */
+
+    /* 渲染选择 */
+    --waline-border: 2px solid var(--waline-border-color);
+    /* 边框 */
+    --waline-avatar-radius: 20%;
+    /* 头像圆角 */
+    --waline-box-shadow: none;
+    /* 盒子阴影 */
+}
+
+/* 根据用户设置 ↓ */
+html.dark {
+    /* 常规颜色 */
+    --waline-white: #d1d5db !important;
+    --waline-light-grey: #666 !important;
+    --waline-dark-grey: #999 !important;
+
+    /* 布局颜色 */
+    --waline-color: #888 !important;
+    --waline-bgcolor: #212936 !important;
+    --waline-bgcolor-light: #212936 !important;
+    --waline-border-color: #6a6969 !important;
+    --waline-disable-bg-color: #444 !important;
+    --waline-disable-color: #272727 !important;
+    --waline-code-bgcolor: #1c232f;
+
+    /* 特殊颜色 */
+    --waline-bq-color: #272727 !important;
+
+    /* 其他颜色 */
+    --waline-info-bgcolor: rgba(255, 0, 0, 0) !important;
+    --waline-info-color: #999999 !important;
+}

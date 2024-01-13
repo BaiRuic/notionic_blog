@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import './prism.css';
+@import './waline.css';
 
 html {
   --scrollbarBG: #ffffff00;

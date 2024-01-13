@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^0.1.8",
+    "@waline/client": "^2.5.1",
     "dayjs": "^1.11.7",
     "feed": "^4.2.2",
     "framer-motion": "6.4.3",

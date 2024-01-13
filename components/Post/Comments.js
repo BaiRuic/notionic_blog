@@ -8,6 +8,13 @@ const CusdisComponent = dynamic(
   { ssr: false }
 )
 
+const WalineComponent = dynamic(
+  () => {
+    return import('@/components/Post/WalineComments')
+  },
+  { ssr: false }
+)
+
 const UtterancesComponent = dynamic(
   () => {
     return import('@/components/Post/Utterances')
@@ -35,8 +42,11 @@ const Comments = ({ frontMatter }) => {
         <SupaCommentsComponent />
       )}
       {BLOG.comment && BLOG.comment.provider === 'cusdis' && (
-        <CusdisComponent frontMatter={frontMatter}/>
+        <CusdisComponent frontMatter={frontMatter} />
       )}
+      {BLOG.comment && BLOG.comment.provider === 'waline' && (<div key='Waline'>
+        <WalineComponent />
+      </div>)}
     </div>
   )
 }

@@ -67,7 +67,7 @@ const BLOG = {
   },
   comment: {
     // support provider: utterances, supacomments, cusdis
-    provider: 'cusdis', // leave it empty if you don't need any comment plugin
+    provider: 'waline', // leave it empty if you don't need any comment plugin
     supaCommentsConfig: {
       supabaseUrl: 'https://ausnmqzkltuymwllzeox.supabase.co', // The url of your Supabase instance
       supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1c25tcXprbHR1eW13bGx6ZW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUwOTY3NjMsImV4cCI6MjAwMDY3Mjc2M30.ILQhZ5L8tpvG_FR88FijTBcRwb0j6xnkPCjiJthbFNc' // The anonymous key of your Supabase instance
@@ -79,6 +79,10 @@ const BLOG = {
       appId: '560ca3d0-c60a-4287-a4ec-4f666598440c', // data-app-id
       host: 'https://cusdis.com', // data-host, change this if you're using self-hosted version
       scriptSrc: 'https://cusdis.com/js/cusdis.es.js' // change this if you're using self-hosted version
+    },
+    walineConfig: {
+      host: 'https://comment.bairuic.eu.org',
+      note: "be nice!"
     }
   },
   isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
