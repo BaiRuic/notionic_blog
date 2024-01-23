@@ -3,7 +3,13 @@ import Layout from '@/layouts/layout'
 import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import { useRouter } from 'next/router'
 
-import { getAllPagesInSpace, getPageBreadcrumbs, getPageTitle, getPageProperty, idToUuid } from 'notion-utils'
+import {
+  getAllPagesInSpace,
+  getPageBreadcrumbs,
+  getPageTitle,
+  getPageProperty,
+  idToUuid
+} from 'notion-utils'
 import { defaultMapPageUrl } from 'react-notion-x'
 
 import Loading from '@/components/Loading'
@@ -12,9 +18,7 @@ import NotFound from '@/components/NotFound'
 const Post = ({ post, blockMap }) => {
   const router = useRouter()
   if (router.isFallback) {
-    return (
-      <Loading notionSlug={router.asPath.split('/')[2]} />
-    )
+    return <Loading notionSlug={router.asPath.split('/')[2]} />
   }
   if (!post) {
     return <NotFound statusCode={404} />
@@ -42,14 +46,20 @@ export async function getStaticPaths() {
 
   // Remove post id
   const posts = await getAllPosts({ onlyNewsletter: false })
-  const postIds = Object.values(posts)
-    .map((postId) => '/s' + mapPageUrl(postId.id))
-  const noPostsIds = subpageIds.concat(postIds).filter(v => !subpageIds.includes(v) || !postIds.includes(v))
+  const postIds = Object.values(posts).map(
+    (postId) => '/s' + mapPageUrl(postId.id)
+  )
+  const noPostsIds = subpageIds
+    .concat(postIds)
+    .filter((v) => !subpageIds.includes(v) || !postIds.includes(v))
 
   const heros = await getAllPosts({ onlyHidden: true })
-  const heroIds = Object.values(heros)
-    .map((heroId) => '/s' + mapPageUrl(heroId.id))
-  const paths = noPostsIds.concat(heroIds).filter(v => !noPostsIds.includes(v) || !heroIds.includes(v))
+  const heroIds = Object.values(heros).map(
+    (heroId) => '/s' + mapPageUrl(heroId.id)
+  )
+  const paths = noPostsIds
+    .concat(heroIds)
+    .filter((v) => !noPostsIds.includes(v) || !heroIds.includes(v))
 
   return {
     paths,
@@ -91,7 +101,7 @@ export async function getStaticProps({ params: { subpage } }) {
     */
 
     // 先从 database 中得到的所有 posts 查找，找不到就是null
-    post = posts.find((t) => t.id === breadcrumbs[0].block.id) || null
+    post = posts.find((t) => t.id === breadcrumbs[0]?.block.id) || null
     /*  console.log('all posts:', posts)
     console.log('------')
     console.log('id: ', id)
@@ -114,7 +124,7 @@ export async function getStaticProps({ params: { subpage } }) {
   const pageAllowed = (page) => {
     // When page block space_id = NOTION_SPACES_ID
     let allowed = false
-    Object.values(page.block).forEach(block => {
+    Object.values(page?.block).forEach((block) => {
       if (!allowed && block.value && block.value.space_id) {
         allowed = NOTION_SPACES_ID.includes(block.value.space_id)
       }
@@ -123,7 +133,7 @@ export async function getStaticProps({ params: { subpage } }) {
   }
 
   if (!pageAllowed(blockMap)) {
-    return {props: { post: null, blockMap: null }}
+    return { props: { post: null, blockMap: null } }
   }
 
   // 此处如果post为 null,而blockMap不为空， 只有一种可能那就是：
@@ -132,9 +142,9 @@ export async function getStaticProps({ params: { subpage } }) {
   if (post === null) {
     const pageId = idToUuid(subpage)
     const pageTitle = getPageTitle(blockMap)
-    const createdTime = getPageProperty('Created', blockMap.block[pageId], blockMap) || null
-    post =
-    {
+    const createdTime =
+      getPageProperty('Created', blockMap?.block[pageId], blockMap) || null
+    post = {
       id: pageId,
       date: createdTime,
       type: ['Page'], // type = Page 是没有标签 和 date 的
