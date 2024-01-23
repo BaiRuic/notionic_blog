@@ -10,7 +10,21 @@ module.exports = {
   },
   transpilePackages: ['dayjs'],
   images: {
-    domains: ['api.craft.do', 'www.notion.so', 'images.unsplash.com', 's3.us-west-2.amazonaws.com', 'img9.doubanio.com']
+    domains: [
+      'api.craft.do',
+      'www.notion.so',
+      'images.unsplash.com',
+      's3.us-west-2.amazonaws.com',
+      'img9.doubanio.com',
+      'img8.doubanio.com',
+      'img7.doubanio.com',
+      'img6.doubanio.com',
+      'img5.doubanio.com',
+      'img4.doubanio.com',
+      'img3.doubanio.com',
+      'img2.doubanio.com',
+      'img1.doubanio.com'
+    ]
   },
   async headers() {
     return [
