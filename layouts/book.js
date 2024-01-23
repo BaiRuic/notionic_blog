@@ -56,7 +56,7 @@ const BooksLayout = ({ tags, posts, currentTag }) => {
             {t.BOOKS.NOT_FOUND}
           </p>
         )}
-        {filteredBlogPosts.slice(0, 20).map((post) => (
+        {filteredBlogPosts.map((post) => (
           <BookCard key={post.id} post={post} />
         ))}
       </div>
