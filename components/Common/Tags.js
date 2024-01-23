@@ -1,7 +1,9 @@
 import Link from 'next/link'
 
-const Tags = ({ tags, currentTag }) => {
+const Tags = ({ tags, currentTag, tagPage }) => {
+  // tagPage 用来标记是从search页面跳转过来的，还是从books页面跳转过来的，默认是从books页面跳转过来的
   if (!tags) return null
+  let tagFrom = tagPage ? tagPage : 'booktag'
   return (
     <div className='tag-container'>
       <div className='flex flex-wrap justify-center mt-4'>
@@ -16,11 +18,19 @@ const Tags = ({ tags, currentTag }) => {
                   : 'text-gray-400 bg-gray-100 dark:bg-night'
               }`}
             >
-              <Link key={key} scroll={false}
-                href={selected ? '/search' : `/tag/${encodeURIComponent(key)}`}
+              <Link
+                key={key}
+                scroll={false}
+                href={
+                  selected
+                    ? tagFrom === 'tag'
+                      ? '/search'
+                      : '/books'
+                    : `/${tagFrom}/${encodeURIComponent(key)}`
+                }
                 className='px-4 py-2 block'
               >
-              {`${key} (${tags[key]})`}
+                {`${key} (${tags[key]})`}
               </Link>
             </div>
           )
