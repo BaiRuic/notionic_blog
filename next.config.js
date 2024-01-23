@@ -11,6 +11,7 @@ module.exports = {
   transpilePackages: ['dayjs'],
   images: {
     domains: [
+      'neodb.social',
       'api.craft.do',
       'www.notion.so',
       'images.unsplash.com',
