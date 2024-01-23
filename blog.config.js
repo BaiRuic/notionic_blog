@@ -2,7 +2,7 @@ const BLOG = {
   title: 'BaiRuic',
   author: 'BaiRuic',
   email: 'brc730@outlook.com',
-  link: process.env.NEXT_PUBLIC_BLOG_LINK,   // DO NOT CHANGE THIS! Edit .env file!,
+  link: process.env.NEXT_PUBLIC_BLOG_LINK, // DO NOT CHANGE THIS! Edit .env file!,
   newsletter: 'Weekly',
   description: 'This is the way!',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
@@ -37,6 +37,7 @@ const BLOG = {
     keywords: ['Notionic', 'BaiRuic', 'Blog'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
+  notionBookDbPageId: process.env.NEXT_PUBLIC_NOTION_BOOKDB_PAGE_ID, // DO NOT CHANGE THIS! Edit .env file!
   notionPageId: process.env.NOTION_PAGE_ID, // DO NOT CHANGE THIS! Edit .env file!
   notionSpacesId: process.env.NOTION_SPACES_ID, // DO NOT CHANGE THIS! Edit .env file!
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
@@ -70,7 +71,8 @@ const BLOG = {
     provider: 'waline', // leave it empty if you don't need any comment plugin
     supaCommentsConfig: {
       supabaseUrl: 'https://ausnmqzkltuymwllzeox.supabase.co', // The url of your Supabase instance
-      supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1c25tcXprbHR1eW13bGx6ZW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUwOTY3NjMsImV4cCI6MjAwMDY3Mjc2M30.ILQhZ5L8tpvG_FR88FijTBcRwb0j6xnkPCjiJthbFNc' // The anonymous key of your Supabase instance
+      supabaseAnonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1c25tcXprbHR1eW13bGx6ZW94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODUwOTY3NjMsImV4cCI6MjAwMDY3Mjc2M30.ILQhZ5L8tpvG_FR88FijTBcRwb0j6xnkPCjiJthbFNc' // The anonymous key of your Supabase instance
     },
     utterancesConfig: {
       repo: 'BaiRuic/Blog_Comment'
@@ -82,7 +84,7 @@ const BLOG = {
     },
     walineConfig: {
       host: 'https://comment.bairuic.eu.org',
-      note: "be nice!"
+      note: 'be nice!'
     }
   },
   isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
