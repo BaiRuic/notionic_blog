@@ -59,11 +59,11 @@ const BLOG = {
       token: '' // Like '{"token": "xxxxxxxxxxxxxxxxxx"}'
     },
     gaConfig: {
-      measurementId: process.env.NEXT_PUBLIC_GOOGLE_ANALYSIS_measurementId // e.g: G-XXXXXXXXXX
+      measurementId: process.env.NEXT_PUBLIC_GOOGLE_ANALYSIS_MSM_Id // e.g: G-XXXXXXXXXX
     },
     umamiConfig: {
-      scriptUrl: '', // The url of your Umami script
-      websiteId: '' // The website id of your Umami instance
+      scriptUrl: process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL, // The url of your Umami script
+      websiteId: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID // The website id of your Umami instance
     }
   },
   comment: {
