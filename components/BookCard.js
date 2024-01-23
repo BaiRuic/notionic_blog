@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import BLOG from '@/blog.config'
 import { motion } from 'framer-motion'
-import FormattedDate from '@/components/Common/FormattedDate'
 import style from './bookcard.module.css'
 // {
 //     id: '25598bd5-ccf3-4f46-bb3e-5a57c82cc7b0',
@@ -42,7 +41,7 @@ const BookCard = ({ post }) => {
           </div>
           <div className={style.tagss}>
             {post?.Tags?.map((tag) => (
-              <Tag tag={tag} />
+              <Tag key={post.id + post.date} tag={tag} />
             ))}
           </div>
         </div>
